@@ -10,7 +10,7 @@ const Header = () => {
                  src="https://w7.pngwing.com/pngs/664/210/png-transparent-uber-eats-muncheez-delivery-online-food-ordering-food-delivery-food-logo-uber-eats.png" 
                  alt="app logo" />
             </div>
-            <div>
+            <div className="nav-items">
                 <ul>
                     <li>Home</li>
                     <li>About Us</li>
