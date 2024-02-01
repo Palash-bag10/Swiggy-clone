@@ -22,3 +22,24 @@
 .nav-items > ul > li{
     padding: 10px;
 }
+
+.search{
+    padding: 20px;
+}
+
+.restaurant-card{
+    width: 200px;
+    height: 400px;
+    padding: 5px;
+    border: 1px solid sienna;
+}
+
+.res-logo{
+    width: 100%;
+}
+
+.restaurant-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+}
