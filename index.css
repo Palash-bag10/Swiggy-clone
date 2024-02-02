@@ -28,7 +28,7 @@
 }
 
 .restaurant-card{
-    width: 200px;
+    width: 250px;
     height: 400px;
     padding: 5px;
     border: 1px solid sienna;
@@ -36,6 +36,7 @@
 
 .res-logo{
     width: 100%;
+    height: 180px;
 }
 
 .restaurant-container{
