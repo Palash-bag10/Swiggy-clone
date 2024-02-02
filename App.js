@@ -312,7 +312,7 @@ const Body = () => {
         {/* RestaurantCard */}
         {
             resObj.map((restaurant) => (
-                <RestaurantCard resObj={restaurant} />
+                <RestaurantCard key={restaurant.info.id} resObj={restaurant} />
             ))
         }
         {/* <RestaurantCard resName="KFC" cuisine="Burger, Fast Food" /> */}
