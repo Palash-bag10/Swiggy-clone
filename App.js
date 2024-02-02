@@ -28,21 +28,24 @@ const styleCard = {
 };
 
 const RestaurantCard = ({ resObj }) => {
+
+    const {cloudinaryImageId, name, cuisines, avgRating, costForTwo} = resObj?.info;
+    const {deliveryTime} = resObj?.info?.sla;
+
   return (
     <div className="restaurant-card" style={styleCard}>
       <img
         src={
-          "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
-          resObj.info.cloudinaryImageId
+          "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" + cloudinaryImageId
         }
         alt="res-logo"
         className="res-logo"
       />
-      <h3> {resObj.info.name} </h3>
-      <h5> {resObj.info.cuisines.join(", ")} </h5>
-      <h5>{resObj.info.avgRating} stars</h5>
-      <h5>{resObj.info.costForTwo}</h5>
-      <h5>{resObj.info.sla.deliveryTime} mins</h5>
+      <h3> {name} </h3>
+      <h5> {cuisines.join(", ")} </h5>
+      <h5>{avgRating} stars</h5>
+      <h5>{costForTwo}</h5>
+      <h5>{deliveryTime} mins</h5>
     </div>
   );
 };
@@ -307,10 +310,11 @@ const Body = () => {
       <div className="search"> Search </div>
       <div className="restaurant-container">
         {/* RestaurantCard */}
-        <RestaurantCard resObj={resObj[0]} />
-        <RestaurantCard resObj={resObj[1]} />
-        <RestaurantCard resObj={resObj[2]} />
-        <RestaurantCard resObj={resObj[3]} />
+        {
+            resObj.map((restaurant) => (
+                <RestaurantCard resObj={restaurant} />
+            ))
+        }
         {/* <RestaurantCard resName="KFC" cuisine="Burger, Fast Food" /> */}
       </div>
     </div>
