@@ -7,7 +7,7 @@ const styleCard = {
 const RestaurantCard = ({ resObj }) => {
   const { cloudinaryImageId, name, cuisines, avgRating, costForTwo } =
     resObj?.info;
-  const { deliveryTime } = resObj?.info?.sla;
+//   const { deliveryTime } = resObj?.info?.sla;
 
   return (
     <div className="restaurant-card" style={styleCard}>
@@ -20,7 +20,7 @@ const RestaurantCard = ({ resObj }) => {
       <h5> {cuisines.join(", ")} </h5>
       <h5>{avgRating} stars</h5>
       <h5>{costForTwo}</h5>
-      <h5>{deliveryTime} mins</h5>
+      {/* <h5>{deliveryTime} mins</h5> */}
     </div>
   );
 };

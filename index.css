@@ -29,7 +29,7 @@
 
 .restaurant-card{
     width: 250px;
-    height: 400px;
+    /* height: 400px; */
     padding: 5px;
     border: 1px solid sienna;
 }
@@ -43,4 +43,9 @@
     display: flex;
     flex-wrap: wrap;
     gap: 40px;
+}
+
+.filter-btn{
+    margin: 10px;
+    cursor: pointer;
 }
