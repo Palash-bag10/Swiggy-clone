@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
-import resObj from "../utils/mockData";
 
 const Body = () => {
-  const [listOfRestaurent, setListOfRestaurent] = useState(resObj);
+  const [listOfRestaurent, setListOfRestaurent] = useState([]);
 
   useEffect(() => {
     fetchData()
@@ -15,30 +14,8 @@ const Body = () => {
     const json = await data.json();
 
     console.log(json)
+    setListOfRestaurent(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
   }
-
-  //   let listOfRestaurent = [
-  //     {
-  //       info: {
-  //         id: "751465",
-  //         name: "Koshe Kosha",
-  //         cloudinaryImageId: "2d780b832bc0734426963dc0d22e89bb",
-  //         costForTwo: "₹500 for two",
-  //         cuisines: ["Indian", "North Indian", "Thalis", "Desserts"],
-  //         avgRating: 4.4,
-  //       },
-  //     },
-  //     {
-  //       info: {
-  //         id: "637552",
-  //         name: "Chop Nize",
-  //         cloudinaryImageId: "btztnlgd6tcurojmrrbl",
-  //         costForTwo: "₹200 for two",
-  //         cuisines: ["Chinese", "Fast Food"],
-  //         avgRating: 3.9,
-  //       },
-  //     },
-  //   ];
 
   return (
     <div className="body">
@@ -57,8 +34,8 @@ const Body = () => {
       </div>
       <div className="restaurant-container">
         {/* RestaurantCard */}
-        {listOfRestaurent.map((restaurant) => (
-          <RestaurantCard key={restaurant.info.id} resObj={restaurant} />
+        {listOfRestaurent.map((restaurant, i) => (
+          <RestaurantCard key={i} resObj={restaurant} />
         ))}
         {/* <RestaurantCard resName="KFC" cuisine="Burger, Fast Food" /> */}
       </div>
