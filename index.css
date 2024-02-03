@@ -61,3 +61,8 @@
     height: 400px;
     background-color: rgb(240, 246, 240);
 }
+
+.login{
+    padding: 0 20px;
+    font-size: 16px;
+}
