@@ -4,6 +4,8 @@ import Shimmer from "./Shimmer";
 
 const Body = () => {
   const [listOfRestaurent, setListOfRestaurent] = useState([]);
+  const [filteredRestaurant, setFilteredRestaurant] = useState([]);
+  const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
     fetchData()
@@ -15,17 +17,29 @@ const Body = () => {
     const json = await data.json();
 
     console.log(json)
-    setListOfRestaurent(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    setListOfRestaurent(json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    setFilteredRestaurant(json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
   }
 
-  // Conditional Rendering
-  if (listOfRestaurent.length === 0) {
-    return <Shimmer />
-  }
-
-  return (
+  return (listOfRestaurent.length === 0) ? (<Shimmer />) : (
     <div className="body">
       <div className="filter">
+        <div className="search">
+          <input
+           className="search-box" 
+           type="text" 
+           value={searchText} 
+           onChange={(e) => setSearchText(e.target.value)} />
+          <button
+           className="search-btn"
+           onClick={() => {
+            const filteredRestaurant = listOfRestaurent.filter((res) => res.info.name.toLowerCase().includes(searchText.toLowerCase()))
+            setFilteredRestaurant(filteredRestaurant)
+           }}
+           
+           >Search</button>
+        </div>
+
         <button
           className="filter-btn"
           onClick={() => {
@@ -40,7 +54,7 @@ const Body = () => {
       </div>
       <div className="restaurant-container">
         {/* RestaurantCard */}
-        {listOfRestaurent.map((restaurant, i) => (
+        {filteredRestaurant.map((restaurant, i) => (
           <RestaurantCard key={i} resObj={restaurant} />
         ))}
         {/* <RestaurantCard resName="KFC" cuisine="Burger, Fast Food" /> */}
