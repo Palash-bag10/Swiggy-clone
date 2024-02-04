@@ -17,8 +17,8 @@ const Body = () => {
     const json = await data.json();
 
     console.log(json)
-    setListOfRestaurent(json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-    setFilteredRestaurant(json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    setListOfRestaurent(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    setFilteredRestaurant(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
   }
 
   return (listOfRestaurent.length === 0) ? (<Shimmer />) : (
