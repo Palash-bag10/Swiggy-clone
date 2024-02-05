@@ -7,8 +7,8 @@ const About = () => {
             <h1>About</h1>
             <h2>This is About Router Page</h2>
 
-            <User />
-            <UserClass />
+            <User name={"Palash Bag (Function)"} />
+            <UserClass name={"Palash Bag (Class)"} />
         </div>
     )
 }
