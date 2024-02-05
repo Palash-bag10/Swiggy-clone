@@ -1,4 +1,5 @@
 import React from "react";
+import { json } from "react-router-dom";
 
 class UserClass extends React.Component {
 
@@ -6,32 +7,32 @@ class UserClass extends React.Component {
         super(props)
 
         this.state = {
-            count: 0,
+            userInfo: {
+                name: "Dummy",
+                location: "default"
+            }
         }
-
-        console.log("Child Construntor")
+        // console.log(this.props.name + " Child Construntor")
     }
 
-    componentDidMount() {
-        console.log("child Component Did Mount")
+    async componentDidMount() {
+        // console.log(this.props.name + " child Component Did Mount")
+        const data = await fetch("https://api.github.com/users/palash-bag10");
+        const json = await data.json();
+        this.setState({
+            userInfo: json,
+        })
+        console.log(json)
     }
 
     render() {
 
-        console.log("Child Render")
+        // console.log(this.props.name + " Child Render")
 
         return (
             <div className="user-card">
-                <h1> Count: {this.state.count} </h1>
-                <button onClick={() => {
-                    this.setState({
-                        count: this.state.count + 1,
-                    })
-                }}>Increase Count</button>
-
-                {/* <h1> Count2: {this.state.count2} </h1> */}
-                <h2>Name: {this.props.name}</h2>
-                <h3>Location: Kolkata</h3>
+                <h2>Name: {this.state.userInfo.name}</h2>
+                <h3>Location: {this.state.userInfo.location}</h3>
                 <h5>Contact: palash-bag10</h5>
             </div>
         )
