@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, {withDiscountLable} from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
@@ -10,6 +10,10 @@ const Body = () => {
   const [searchText, setSearchText] = useState("");
 
   const userOnlineStatus = useOnlineStatus();
+
+  const RestaurantCardDiscount = withDiscountLable(RestaurantCard)
+
+  console.log("DATA RENDER", listOfRestaurent);
 
   useEffect(() => {
     fetchData()
@@ -66,12 +70,16 @@ const Body = () => {
         {/* RestaurantCard */}
         {filteredRestaurants.map((restaurant) => (
           <Link key={restaurant.info.id} to={"/restaurant/" + restaurant.info.id}>
-            <RestaurantCard resObj={restaurant} />
+            {
+              restaurant.info.aggregatedDiscountInfoV3
+              ? <RestaurantCardDiscount resObj={restaurant}/>
+              : <RestaurantCard resObj={restaurant} />
+            }
+            
           </Link>
         ))}
-        {/* <RestaurantCard resName="KFC" cuisine="Burger, Fast Food" /> */}
       </div>
-    </div>
+    </div> 
   );
 };
 
