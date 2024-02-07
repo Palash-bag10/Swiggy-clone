@@ -12,7 +12,7 @@ const RestaurantCard = ({ resObj }) => {
   return (
     <div className=" h-[300px] w-[200px] p-4 m-2 flex flex-col items-center justify-center gap-y-5 rounded overflow-hidden shadow-lg" style={styleCard}>
       <div className=" w-[100px] ">
-        <img src={CDN_URL + cloudinaryImageId} alt="res-logo" className=" w-full object-fill"/>
+        <img src={CDN_URL + cloudinaryImageId} alt="res-logo" className=" w-full aspect-square object-cover"/>
       </div>
       <div className="">
         <h3 className=" font-bold text-[18px] text-gray-700"> {name} </h3>
