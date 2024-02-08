@@ -25,7 +25,7 @@ const AppLayout = () => {
 
   return (
     // Default Value
-    <UserContext.Provider value={{loggedInUser : userName}}>
+    <UserContext.Provider value={{loggedInUser : userName, setUserName}}>
     {/* Palash */}
       <div className="app">
         {/* Header */}
