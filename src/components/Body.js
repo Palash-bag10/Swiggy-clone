@@ -4,31 +4,32 @@ import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
+import useAllRestaurant from "../utils/useAllRestaurant";
 
 const Body = () => {
-  const [listOfRestaurent, setListOfRestaurent] = useState([]);
-  const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+  // const [listOfRestaurent, setListOfRestaurent] = useState([]);
+  // const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
 
   const userOnlineStatus = useOnlineStatus();
 
   const RestaurantCardDiscount = withDiscountLable(RestaurantCard)
 
-  console.log("DATA RENDER", listOfRestaurent);
+  const {setFilteredRestaurants, setListOfRestaurent, filteredRestaurants, listOfRestaurent} = useAllRestaurant()
 
-  useEffect(() => {
-    fetchData()
-  },[])
+  // useEffect(() => {
+  //   fetchData()
+  // },[])
 
-  const fetchData = async () => {
-    const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.572646&lng=88.36389500000001&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+  // const fetchData = async () => {
+  //   const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.572646&lng=88.36389500000001&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
 
-    const json = await data.json();
+  //   const json = await data.json();
 
-    console.log(json)
-    setListOfRestaurent(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-    setFilteredRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-  }
+  //   console.log(json)
+  //   setListOfRestaurent(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+  //   setFilteredRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+  // }
 
   if(userOnlineStatus === false) {
     return (
