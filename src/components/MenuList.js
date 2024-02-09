@@ -1,7 +1,15 @@
+import { useDispatch } from "react-redux";
 import { CDN_URL, MENU_IMAGE_URL } from "../utils/constants";
+import { addItem } from "../utils/cartSlice";
 
 const MenuList = ({menuItems}) => {
-    console.log("MENU: ", menuItems)
+    // console.log("MENU: ", menuItems)
+
+    const dispatch = useDispatch()
+
+    const handleAddItem = (menuItem) => {
+        dispatch(addItem(menuItem))
+    }
 
     return (
         <div className="flex flex-col justify-between  my-3 px-2 cursor-pointer">
@@ -17,7 +25,9 @@ const MenuList = ({menuItems}) => {
                     <div className=" w-2/12 p-3">
                         <img src={MENU_IMAGE_URL + menuItem.card.info.imageId} alt="" className=" rounded-lg " />
                         <div className="absolute">
-                            <button className=" bg-green-400 text-white font-bold rounded-2xl drop-shadow-xl px-3 py-1 -translate-y-6 translate-x-1/2">ADD</button>
+                            <button 
+                            onClick={() => handleAddItem(menuItem)}
+                            className=" bg-green-400 text-white font-bold rounded-2xl drop-shadow-xl px-3 py-1 -translate-y-6 translate-x-1/2">ADD</button>
                         </div>
                     </div>
                 </div>
