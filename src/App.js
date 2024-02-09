@@ -8,6 +8,8 @@ import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
 import UserContext from "./utils/UserContext";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
 // import Grocery from "./components/Grocery";
 
 const Grocery = lazy(() => import("./components/Grocery"));
@@ -24,15 +26,17 @@ const AppLayout = () => {
   }, [])
 
   return (
-    // Default Value
-    <UserContext.Provider value={{loggedInUser : userName, setUserName}}>
-    {/* Palash */}
-      <div className="app">
-        {/* Header */}
-        <Header />
-        <Outlet />
-      </div>
-    </UserContext.Provider>
+    <Provider store={appStore}>
+      {/* // Default Value */}
+      <UserContext.Provider value={{loggedInUser : userName, setUserName}}>
+      {/* Palash */}
+        <div className="app">
+          {/* Header */}
+          <Header />
+          <Outlet />
+        </div>
+      </UserContext.Provider>
+    </Provider>
   );
 };
 
