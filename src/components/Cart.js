@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import MenuList from "./MenuList";
 import { clearCart } from "../utils/cartSlice";
+import CartList from "./CartList";
 
 const Cart = () => {
 
@@ -22,7 +23,7 @@ const Cart = () => {
                 className=" bg-orange-600 text-white text-xl font-semibold px-2 py-1 rounded-md">Clear Cart</button>
                 {cartItems.length === 0 
                     ? (<h3>Your Cart is Empty</h3>) 
-                    : (<MenuList menuItems={cartItems}/>)
+                    : (<CartList menuItems={cartItems}/>)
                 }
             </div>
         </div>
