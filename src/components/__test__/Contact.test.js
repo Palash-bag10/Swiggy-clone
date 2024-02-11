@@ -16,3 +16,17 @@ test("Should load Button inside contact us component", () => {
     const button = screen.getByRole("button");
     expect(button).toBeInTheDocument();
 })
+
+test("Should load input name inside contact us component", () => {
+    render(<Contact />)
+
+    const inputName = screen.getByPlaceholderText("name");
+    expect(inputName).toBeInTheDocument();
+})
+
+test("Should load two input boxes inside contact us component", () => {
+    render(<Contact />)
+
+    const inputBoxs = screen.getAllByRole("textbox");
+    expect(inputBoxs.length).toBe(2);
+})
