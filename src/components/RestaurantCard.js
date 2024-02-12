@@ -5,8 +5,8 @@ const styleCard = {
 };
 
 const RestaurantCard = ({ resObj }) => {
-  const { cloudinaryImageId, name, cuisines, avgRating, costForTwo } =
-    resObj?.info;
+  console.log(resObj?.info)
+  const { cloudinaryImageId, name, cuisines, avgRating, costForTwo } = resObj?.info;
   //   const { deliveryTime } = resObj?.info?.sla;
 
   return (
