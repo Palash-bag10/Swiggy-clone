@@ -46,6 +46,7 @@ const Body = () => {
           <input
            className=" outline-none bg-slate-200 rounded-md" 
            type="text" 
+           data-testid="searchInput"
            value={searchText} 
            onChange={(e) => setSearchText(e.target.value)} />
           <button
