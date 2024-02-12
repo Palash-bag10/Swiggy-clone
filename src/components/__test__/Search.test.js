@@ -38,3 +38,25 @@ it("Should search res list for pizza input", async() => {
     expect(cardsAfterSearch.length).toBe(1);
 
 })
+
+
+it("Should filter top rated restaurant", async() => {
+    
+    await act(async () => render( 
+        <BrowserRouter>
+            <Body /> 
+        </BrowserRouter>
+    ))
+
+    const cardsBeforeFilter = screen.getAllByTestId("resCard");
+
+    expect(cardsBeforeFilter.length).toBe(9);
+    
+    const topRatedBtn = screen.getByRole("button", {name: "Top Rated Restaurent"});
+
+    fireEvent.click(topRatedBtn);
+
+    const cardsAfterFilter = screen.getAllByTestId("resCard")
+
+    expect(cardsAfterFilter.length).toBe(7);
+})
