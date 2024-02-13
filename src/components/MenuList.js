@@ -15,7 +15,10 @@ const MenuList = ({menuItems}) => {
         <div className="flex flex-col justify-between  my-3 px-2 cursor-pointer">
           {
             menuItems.map((menuItem) => (
-                <div key={menuItem.card.info.id} className="flex justify-between p-4 border-b-2 ">
+                <div
+                 data-testid="foodItems"
+                 key={menuItem.card.info.id}
+                 className="flex justify-between p-4 border-b-2 ">
                     <div className="w-10/12 flex flex-col">
                         <p className=" text-base font-semibold"> {menuItem.card.info.name} </p>
                         <p className=" text-base font-semibold">Rs. {menuItem.card.info.price / 100 || menuItem.card.info.defaultPrice / 100} </p>

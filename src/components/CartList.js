@@ -16,6 +16,7 @@ const CartList = ({menuItems}) => {
     <div className="flex flex-col justify-between  my-3 px-2 cursor-pointer">
       {menuItems.map((menuItem) => (
         <div
+          data-testid="cartfoodItems"
           key={menuItem.card.info.id}
           className="flex justify-between p-4 border-b-2 "
         >
